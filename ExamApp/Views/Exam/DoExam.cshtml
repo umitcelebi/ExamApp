@@ -14,177 +14,228 @@
 </div>
 
 <div class="mt-4">
-    <div class="row">
-        <div class="col-md-6">
+    <form>
+        <input type="hidden" id="solution1" asp-for="Questions[0].Solution" value="@Model.Questions[0].Solution" />
+        <input type="hidden" id="solution2" asp-for="Questions[1].Solution" value="@Model.Questions[0].Solution" />
+        <input type="hidden" id="solution3" asp-for="Questions[2].Solution" value="@Model.Questions[0].Solution" />
+        <input type="hidden" id="solution4" asp-for="Questions[3].Solution" value="@Model.Questions[0].Solution" />
+        <div class="row">
+            <div class="col-md-6">
 
-            <!-- QUESTİON 1 -->
-            <div class="card mt-4">
-                <div class="card-body">
-                    <p class="card-text">@Model.Questions[0].QuestionsName</p>
+                <!-- QUESTİON 1 -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Questions[0].QuestionsName</p>
+                    </div>
+                    <div class="card-body">
+                        <!-- OPTION A -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="Q1" id="q1o1">
+                            <label class="form-check-label" for="q1o1">
+                                @Model.Questions[0].Options1
+                            </label>
+                        </div>
+
+                        <!-- OPTION B -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Q1" value="2" id="q1o2">
+                            <label class="form-check-label" for="q1o2">
+                                @Model.Questions[0].Options2
+                            </label>
+                        </div>
+
+                        <!-- OPTION C -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Q1" value="3" id="q1o3">
+                            <label class="form-check-label" for="q1o3">
+                                @Model.Questions[0].Options3
+                            </label>
+                        </div>
+
+                        <!-- OPTION D -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Q1" value="4" id="q1o4">
+                            <label class="form-check-label" for="q1o4">
+                                @Model.Questions[0].Options4
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <!-- OPTION A -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q1" id="q1o1">
-                        <label class="form-check-label" for="q1o1">
-                            @Model.Questions[0].Options1
-                        </label>
-                    </div>
 
-                    <!-- OPTION B -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q1" id="q1o2">
-                        <label class="form-check-label" for="q1o2">
-                            @Model.Questions[0].Options2
-                        </label>
+                <!-- QUESTİON 3 -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Questions[2].QuestionsName</p>
                     </div>
+                    <div class="card-body">
+                        <!-- OPTION A -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="Q3" id="q3o1">
+                            <label class="form-check-label" for="q3o1">
+                                @Model.Questions[2].Options1
+                            </label>
+                        </div>
 
-                    <!-- OPTION C -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q1" id="q1o3">
-                        <label class="form-check-label" for="q1o3">
-                            @Model.Questions[0].Options3
-                        </label>
-                    </div>
+                        <!-- OPTION B -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="2" name="Q3" id="q3o2">
+                            <label class="form-check-label" for="q3o2">
+                                @Model.Questions[2].Options2
+                            </label>
+                        </div>
 
-                    <!-- OPTION D -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q1" id="q1o4">
-                        <label class="form-check-label" for="q1o4">
-                            @Model.Questions[0].Options4
-                        </label>
+                        <!-- OPTION C -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="3" name="Q3" id="q3o3">
+                            <label class="form-check-label" for="q3o3">
+                                @Model.Questions[2].Options3
+                            </label>
+                        </div>
+
+                        <!-- OPTION D -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="4" name="Q3" id="q3o4">
+                            <label class="form-check-label" for="q3o4">
+                                @Model.Questions[2].Options4
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
 
-            <!-- QUESTİON 3 -->
-            <div class="card mt-4">
-                <div class="card-body">
-                    <p class="card-text">@Model.Questions[2].QuestionsName</p>
+                <!-- QUESTİON 2 -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Questions[1].QuestionsName</p>
+                    </div>
+                    <div class="card-body">
+
+                        <!-- OPTION A -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="Q2" id="q2o1">
+                            <label class="form-check-label" for="q2o1">
+                                @Model.Questions[1].Options1
+                            </label>
+                        </div>
+
+                        <!-- OPTION B -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="2" name="Q2" id="q2o2">
+                            <label class="form-check-label" for="q2o2">
+                                @Model.Questions[1].Options2
+                            </label>
+                        </div>
+
+                        <!-- OPTION C -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="3" name="Q2" id="q2o3">
+                            <label class="form-check-label" for="q2o3">
+                                @Model.Questions[1].Options3
+                            </label>
+                        </div>
+
+                        <!-- OPTION D -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="4" name="Q2" id="q2o4">
+                            <label class="form-check-label" for="q2o4">
+                                @Model.Questions[1].Options4
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <!-- OPTION A -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q3" id="q3o1">
-                        <label class="form-check-label" for="q3o1">
-                            @Model.Questions[2].Options1
-                        </label>
-                    </div>
 
-                    <!-- OPTION B -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q3" id="q3o2">
-                        <label class="form-check-label" for="q3o2">
-                            @Model.Questions[2].Options2
-                        </label>
+                <!-- QUESTİON 4 -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Questions[3].QuestionsName</p>
                     </div>
+                    <div class="card-body">
 
-                    <!-- OPTION C -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q3" id="q3o3">
-                        <label class="form-check-label" for="q3o3">
-                            @Model.Questions[2].Options3
-                        </label>
-                    </div>
+                        <!-- OPTION A -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="1" name="Q4" id="q4o1">
+                            <label class="form-check-label" for="q4o1">
+                                @Model.Questions[3].Options1
+                            </label>
+                        </div>
 
-                    <!-- OPTION D -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q3" id="q3o4">
-                        <label class="form-check-label" for="q3o4">
-                            @Model.Questions[2].Options4
-                        </label>
+                        <!-- OPTION B -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="2" name="Q4" id="q4o2">
+                            <label class="form-check-label" for="q4o2">
+                                @Model.Questions[3].Options2
+                            </label>
+                        </div>
+
+                        <!-- OPTION C -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="3" name="Q4" id="q4o3">
+                            <label class="form-check-label" for="q4o3">
+                                @Model.Questions[3].Options3
+                            </label>
+                        </div>
+
+                        <!-- OPTION D -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="4" name="Q4" id="q4o4">
+                            <label class="form-check-label" for="q4o4">
+                                @Model.Questions[3].Options4
+                            </label>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
 
-            <!-- QUESTİON 2 -->
-            <div class="card mt-4">
-                <div class="card-body">
-                    <p class="card-text">@Model.Questions[1].QuestionsName</p>
-                </div>
-                <div class="card-body">
-
-                    <!-- OPTION A -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q2" id="q2o1">
-                        <label class="form-check-label" for="q2o1">
-                            @Model.Questions[1].Options1
-                        </label>
-                    </div>
-
-                    <!-- OPTION B -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q2" id="q2o2">
-                        <label class="form-check-label" for="q2o2">
-                            @Model.Questions[1].Options2
-                        </label>
-                    </div>
-
-                    <!-- OPTION C -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q2" id="q2o3">
-                        <label class="form-check-label" for="q2o3">
-                            @Model.Questions[1].Options3
-                        </label>
-                    </div>
-
-                    <!-- OPTION D -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q2" id="q2o4">
-                        <label class="form-check-label" for="q2o4">
-                            @Model.Questions[1].Options4
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- QUESTİON 4 -->
-            <div class="card mt-4">
-                <div class="card-body">
-                    <p class="card-text">@Model.Questions[3].QuestionsName</p>
-                </div>
-                <div class="card-body">
-
-                    <!-- OPTION A -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q4" id="q4o1">
-                        <label class="form-check-label" for="q4o1">
-                            @Model.Questions[3].Options1
-                        </label>
-                    </div>
-
-                    <!-- OPTION B -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q4" id="q4o2">
-                        <label class="form-check-label" for="q4o2">
-                            @Model.Questions[3].Options2
-                        </label>
-                    </div>
-
-                    <!-- OPTION C -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q4" id="q4o3">
-                        <label class="form-check-label" for="q4o3">
-                            @Model.Questions[3].Options3
-                        </label>
-                    </div>
-
-                    <!-- OPTION D -->
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Q4" id="q4o4">
-                        <label class="form-check-label" for="q4o4">
-                            @Model.Questions[3].Options4
-                        </label>
-                    </div>
-
-                </div>
-            </div>
+        <div class="text-center mt-4">
+            <button id="send" type="submit" class="btn btn-info text-center">SINAVI TAMAMLA</button>
         </div>
-    </div>
-
-    <div class="text-center mt-4">
-        <button class="btn btn-info text-center">SINAVI TAMAMLA</button>
-    </div>
+    </form>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+    $("#send").click(function (e) {
+        e.preventDefault();
+
+        var solution1 = $("#solution1").val();
+        var solution2 = $("#solution2").val();
+        var solution3 = $("#solution3").val();
+        var solution4 = $("#solution4").val();
+
+        var s1 = $("input[type='radio'][name='Q1']:checked").val();
+        var s2 = $("input[type='radio'][name='Q2']:checked").val();
+        var s3 = $("input[type='radio'][name='Q3']:checked").val();
+        var s4 = $("input[type='radio'][name='Q4']:checked").val();
+
+        if (solution1 == s1) {
+            $("input[type='radio'][name='Q1']:checked").parent('div').addClass('bg-success');
+        } else {
+            $("input[type='radio'][name='Q1']:checked").parent('div').addClass('bg-danger');
+        }
+        if (solution2 == s2) {
+            $("input[type='radio'][name='Q2']:checked").parent('div').addClass('bg-success');
+        } else {
+            $("input[type='radio'][name='Q2']:checked").parent('div').addClass('bg-danger');
+        }
+        if (solution3 == s3) {
+            $("input[type='radio'][name='Q3']:checked").parent('div').addClass('bg-success');
+        } else {
+            $("input[type='radio'][name='Q3']:checked").parent('div').addClass('bg-danger');
+        }
+        if (solution4 == s4) {
+            $("input[type='radio'][name='Q4']:checked").parent('div').addClass('bg-success');
+        } else {
+            $("input[type='radio'][name='Q4']:checked").parent('div').addClass('bg-danger');
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Exam/DoExam"
+        });
+    });
+</script>

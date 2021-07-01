@@ -53,11 +53,7 @@ namespace ExamApp.Controllers
             _topicService.Add(topic);
             return RedirectToAction(nameof(Index));
         }
-        [HttpPost]
-        public IActionResult Deneme()
-        {
-            return RedirectToAction(nameof(Index));
-        }
+
         public IActionResult Delete(int id)
         {
             var exam = _topicService.GetById(id);
@@ -69,10 +65,17 @@ namespace ExamApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult DoExam(int id)
         {
 
             return View(_topicService.GetById(id));
+        }
+
+        [HttpPost]
+        public IActionResult DoExam()
+        {
+            return RedirectToAction("Index");
         }
     }
 }

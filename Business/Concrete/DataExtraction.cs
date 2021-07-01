@@ -14,47 +14,52 @@ namespace Business.Concrete
         public static List<Topic> getTopic()
         {
             List<Topic> topics = new List<Topic>();
-            string url = "https://www.wired.com/";
-            WebClient client = new WebClient();
-            string html = client.DownloadString(url);
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(html);
-            string[] href = new string[5];
-
-            for (int i = 0; i < 5; i++)
+            try
             {
-                href[i] = "https://www.wired.com" + doc.DocumentNode
-                    .SelectSingleNode("/html/body/div[3]/div/div[3]/div/div/div[2]/div[3]/div[1]/div[1]/div/ul/li[" + (i + 1) + "]/a").Attributes["href"].Value;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                url = href[i];
-                html = client.DownloadString(url);
-                doc.LoadHtml(html);
-
-                string title = doc.DocumentNode.SelectSingleNode("html/body/div[1]/div/main/article/div[1]/header/div/div[1]/h1").InnerHtml;
                 string body = "";
-                HtmlNodeCollection div = doc.DocumentNode.SelectNodes("//div[contains(@class, 'grid--item body body__container article__body grid-layout__content')]");
+                string url = "https://www.wired.com/";
+                WebClient client = new WebClient();
+                string html = client.DownloadString(url);
+                HtmlDocument doc = new HtmlDocument();
+                doc.LoadHtml(html);
+                string[] href = new string[5];
 
-                foreach (var item in div)
+                for (int i = 0; i < 5; i++)
                 {
-                    body += item.InnerText;
+                    href[i] = "https://www.wired.com" + doc.DocumentNode
+                        .SelectSingleNode("/html/body/div[3]/div/div[3]/div/div/div[2]/div[3]/div[1]/div[1]/div/ul/li[" + (i + 1) + "]/a").Attributes["href"].Value;
                 }
 
-                Topic topic = new Topic()
+                for (int i = 0; i < 5; i++)
                 {
-                    Title = title,
-                    Body = body
-                };
-                topics.Add(topic);
-            }
+                    url = href[i];
+                    html = client.DownloadString(url);
+                    doc.LoadHtml(html);
 
+                    string title = doc.DocumentNode.SelectSingleNode("html/body/div[1]/div/main/article/div[1]/header/div/div[1]/h1").InnerHtml;
+                    body = "";
+                    HtmlNodeCollection div = doc.DocumentNode.SelectNodes("//div[contains(@class, 'grid--item body body__container article__body grid-layout__content')]");
+
+                    foreach (var item in div)
+                    {
+                        body += item.InnerText;
+                    }
+                    
+                    Topic topic = new Topic()
+                    {
+                        Title = title,
+                        Body = body
+                    };
+                    topics.Add(topic);
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
             return topics;
         }
     }
 }
-/*
- /html/body/div[3]/div/div[3]/div/div/div[2]/div[3]/div[1]/div[1]/div/ul/li[2]/a
-
- */

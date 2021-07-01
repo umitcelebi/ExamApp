@@ -13,7 +13,7 @@ namespace ExamApp.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Topics = new SelectList(DataExtraction.getTopic(),"Body","Title");
+
             return View();
         }
     }
