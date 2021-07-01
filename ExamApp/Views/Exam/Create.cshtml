@@ -1,0 +1,273 @@
+﻿@model Exam
+
+@{
+    ViewData["Title"] = "Create Exam";
+}
+
+<form>
+    <div class="form-group">
+        <label asp-for="Title" class="form-control">Yazı</label>
+        <select id="topic" asp-items="ViewBag.Topics">
+
+            <option disabled="disabled" selected="selected">Select Item</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Body"></label>
+        <textarea id="bodyArticle" asp-for="Body" class="form-control" readonly="readonly" style="width: 100%; height: 250px; resize: none"></textarea>
+    </div>
+
+    <div class="form-group">
+        <input id="question1" asp-for="Question1.QuestionsName" class="form-control" placeholder="Question 1">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A)</span>
+                    </div>
+                    <input id="q1o1" asp-for="Question1.Options1" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C)</span>
+                    </div>
+                    <input id="q1o3" asp-for="Question1.Options3" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B)</span>
+                    </div>
+                    <input id="q1o2" asp-for="Question1.Options2" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D)</span>
+                    </div>
+                    <input id="q1o4" asp-for="Question1.Options4" class="form-control">
+                </div>
+            </div>
+        </div>
+        <select id="q1s1" asp-for="Question1.Solution">
+            <option disabled="disabled" selected="selected">Doğru Cevabı Seç</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input id="question2" asp-for="Question2.QuestionsName" class="form-control" placeholder="Question 2">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A)</span>
+                    </div>
+                    <input id="q2o1" asp-for="Question2.Options1" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C)</span>
+                    </div>
+                    <input id="q2o3" asp-for="Question2.Options3" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B)</span>
+                    </div>
+                    <input id="q2o2" asp-for="Question2.Options2" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D)</span>
+                    </div>
+                    <input id="q2o4" asp-for="Question2.Options4" class="form-control">
+                </div>
+            </div>
+        </div>
+        <select id="q2s2" asp-for="Question2.Solution">
+            <option disabled="disabled" selected="selected">Doğru Cevabı Seç</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input id="question3" asp-for="Question3.QuestionsName" class="form-control" placeholder="Question 3">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A)</span>
+                    </div>
+                    <input id="q3o1" asp-for="Question3.Options1" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C)</span>
+                    </div>
+                    <input id="q3o3" asp-for="Question3.Options3" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B)</span>
+                    </div>
+                    <input id="q3o2" asp-for="Question3.Options2" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D)</span>
+                    </div>
+                    <input id="q3o4" asp-for="Question3.Options4" class="form-control">
+                </div>
+            </div>
+        </div>
+        <select id="q3s3" asp-for="Question3.Solution">
+            <option disabled="disabled" selected="selected">Doğru Cevabı Seç</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input id="question4" asp-for="Question4.QuestionsName" class="form-control" placeholder="Question 4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">A)</span>
+                    </div>
+                    <input id="q4o1" asp-for="Question4.Options1" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">C)</span>
+                    </div>
+                    <input id="q4o3" asp-for="Question4.Options3" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">B)</span>
+                    </div>
+                    <input id="q4o2" asp-for="Question4.Options2" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">D)</span>
+                    </div>
+                    <input id="q4o4" asp-for="Question4.Options4" class="form-control">
+                </div>
+            </div>
+        </div>
+        <select id="q4s4" asp-for="Question4.Solution">
+            <option disabled="disabled" selected="selected">Doğru Cevabı Seç</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+            <option value="4">D</option>
+        </select>
+    </div>
+
+    <button id="create" type="submit" class="btn btn-primary">Submit</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+<script>
+    $("#create").click(function (e) {
+        var title = $("#topic option:selected").text();
+        var body = $("#bodyArticle").val();
+        var q1 = $("#question1").val();
+        var q1o1 = $("#q1o1").val();
+        var q1o2 = $("#q1o2").val();
+        var q1o3 = $("#q1o3").val();
+        var q1o4 = $("#q1o4").val();
+        var q1s1 = $("#q1s1").val();
+        var q2 = $("#question2").val();
+        var q2o1 = $("#q2o1").val();
+        var q2o2 = $("#q2o2").val();
+        var q2o3 = $("#q2o3").val();
+        var q2o4 = $("#q2o4").val();
+        var q2s2 = $("#q2s2").val();
+        var q3 = $("#question3").val();
+        var q3o1 = $("#q3o1").val();
+        var q3o2 = $("#q3o2").val();
+        var q3o3 = $("#q3o3").val();
+        var q3o4 = $("#q3o4").val();
+        var q3s3 = $("#q3s3").val();
+        var q4 = $("#question4").val();
+        var q4o1 = $("#q4o1").val();
+        var q4o2 = $("#q4o2").val();
+        var q4o3 = $("#q4o3").val();
+        var q4o4 = $("#q4o4").val();
+        var q4s4 = $("#q4s4").val();
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/Exam/CreateExam",
+            data: {
+                Title: title,
+                Body: body,
+                Question1: {
+                    QuestionsName: q1,
+                    Options1: q1o1,
+                    Options2: q1o2,
+                    Options3: q1o3,
+                    Options4: q1o4,
+                    Solution: q1s1
+                },
+                Question2: {
+                    QuestionsName: q2,
+                    Options1: q2o1,
+                    Options2: q2o2,
+                    Options3: q2o3,
+                    Options4: q2o4,
+                    Solution: q2s2
+                },
+                Question3: {
+                    QuestionsName: q3,
+                    Options1: q3o1,
+                    Options2: q3o2,
+                    Options3: q3o3,
+                    Options4: q3o4,
+                    Solution: q3s3
+                },
+                Question4: {
+                    QuestionsName: q4,
+                    Options1: q4o1,
+                    Options2: q4o2,
+                    Options3: q4o3,
+                    Options4: q4o4,
+                    Solution: q4s4
+                }
+            },
+            success: function (result) {
+                alert("Sınav Başarı ile kayıt edildi");
+                window.location.href = "/Exam";
+            },
+            error: function (result) {
+                alert("Bir hata meydana geldi");
+            }
+        });
+    });
+</script>
+<script>
+    $("#topic").change(function () {
+        var getBody = $("#topic option:selected").val();
+        $("#bodyArticle").val(getBody);
+    });
+</script>

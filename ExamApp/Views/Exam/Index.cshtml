@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Topic>
+
+@{
+    ViewData["Title"] = "Exams";
+}
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>Tarih</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TopicId</td>
+                <td><a asp-controller="Exam" asp-action="DoExam" asp-route-id="@item.TopicId">@item.Title</a></td>
+                <td>@item.CreateTime.ToString("MM/dd/yyyy")</td>
+                <td>
+                    <a asp-controller="Exam"
+                       asp-action="Delete"
+                       asp-route-id="@item.TopicId"
+                       class="btn btn-danger btn-sm">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
