@@ -13,6 +13,9 @@ using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.Context;
+using DataAccess.Concrete.Identity;
+using Entity.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExamApp
@@ -29,6 +32,14 @@ namespace ExamApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationIdentityDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly("ExamApp")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddTransient<IExamResultService,ExamResultService>();
+            services.AddTransient<IExamResultDal, ExamResultDal>();
+
             services.AddTransient<ITopicService,TopicService>();
             services.AddTransient<ITopicDal, TopicDal>();
 
@@ -54,6 +65,8 @@ namespace ExamApp
             app.UseStatusCodePages();
 
             app.UseRouting();
+            
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
@@ -64,6 +77,9 @@ namespace ExamApp
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
             });
+            
+            //SeedIdentity.CreateIdentityUsers(app.ApplicationServices, Configuration).Wait();
+
         }
     }
 }

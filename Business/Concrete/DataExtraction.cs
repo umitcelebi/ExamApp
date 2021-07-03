@@ -57,7 +57,7 @@ namespace Business.Concrete
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                throw;
+                //throw;
             }
             return topics;
         }

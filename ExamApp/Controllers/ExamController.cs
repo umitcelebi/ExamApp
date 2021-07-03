@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Concrete;
 using Entity;
+using Entity.Identity;
 using ExamApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ExamApp.Controllers
 {
+    [Authorize]
     public class ExamController : Controller
     {
         private ITopicService _topicService;
-
-        public ExamController(ITopicService topicService)
+        private UserManager<ApplicationUser> _userManager;
+        private IExamResultService _examResultService;
+        public ExamController(ITopicService topicService, UserManager<ApplicationUser> userManager, IExamResultService examResultService)
         {
             _topicService = topicService;
+            _userManager = userManager;
+            _examResultService = examResultService;
         }
 
         public IActionResult Index()
@@ -60,7 +67,7 @@ namespace ExamApp.Controllers
             if (exam != null)
             {
                 _topicService.Delete(exam);
-                
+
             }
             return RedirectToAction("Index");
         }
@@ -68,13 +75,24 @@ namespace ExamApp.Controllers
         [HttpGet]
         public IActionResult DoExam(int id)
         {
-
+            
             return View(_topicService.GetById(id));
         }
 
         [HttpPost]
-        public IActionResult DoExam()
+        public async Task<IActionResult> DoExam(string username, int topicId, int score)
         {
+            var user = await _userManager.FindByNameAsync(username);
+            
+            var result = new ExamResult()
+            {
+                UserId = user.Id,
+                TopicId = topicId,
+                Score = score
+            };
+
+            _examResultService.Add(result);
+
             return RedirectToAction("Index");
         }
     }

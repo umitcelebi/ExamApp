@@ -15,10 +15,9 @@ namespace DataAccess.Concrete.Context
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb; Database=ExamDb; Trusted_Connection=true");
 
         }
-        
-
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Question> Questions { get; set; }
+        public DbSet<ExamResult> ExamResults { get; set; }
 
     }
 }

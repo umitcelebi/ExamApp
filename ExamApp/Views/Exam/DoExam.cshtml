@@ -15,10 +15,12 @@
 
 <div class="mt-4">
     <form>
+        <input type="hidden" id="username" value="@User.Identity.Name" />
+        <input type="hidden" id="topicId" value="@Model.TopicId" />
         <input type="hidden" id="solution1" asp-for="Questions[0].Solution" value="@Model.Questions[0].Solution" />
-        <input type="hidden" id="solution2" asp-for="Questions[1].Solution" value="@Model.Questions[0].Solution" />
-        <input type="hidden" id="solution3" asp-for="Questions[2].Solution" value="@Model.Questions[0].Solution" />
-        <input type="hidden" id="solution4" asp-for="Questions[3].Solution" value="@Model.Questions[0].Solution" />
+        <input type="hidden" id="solution2" asp-for="Questions[1].Solution" value="@Model.Questions[1].Solution" />
+        <input type="hidden" id="solution3" asp-for="Questions[2].Solution" value="@Model.Questions[2].Solution" />
+        <input type="hidden" id="solution4" asp-for="Questions[3].Solution" value="@Model.Questions[3].Solution" />
         <div class="row">
             <div class="col-md-6">
 
@@ -201,7 +203,7 @@
 <script>
     $("#send").click(function (e) {
         e.preventDefault();
-
+        var score=0;
         var solution1 = $("#solution1").val();
         var solution2 = $("#solution2").val();
         var solution3 = $("#solution3").val();
@@ -211,31 +213,48 @@
         var s2 = $("input[type='radio'][name='Q2']:checked").val();
         var s3 = $("input[type='radio'][name='Q3']:checked").val();
         var s4 = $("input[type='radio'][name='Q4']:checked").val();
-
+        
         if (solution1 == s1) {
             $("input[type='radio'][name='Q1']:checked").parent('div').addClass('bg-success');
+            score += 25;
         } else {
             $("input[type='radio'][name='Q1']:checked").parent('div').addClass('bg-danger');
         }
         if (solution2 == s2) {
             $("input[type='radio'][name='Q2']:checked").parent('div').addClass('bg-success');
+            score += 25;
         } else {
             $("input[type='radio'][name='Q2']:checked").parent('div').addClass('bg-danger');
         }
         if (solution3 == s3) {
             $("input[type='radio'][name='Q3']:checked").parent('div').addClass('bg-success');
+            score += 25;
         } else {
             $("input[type='radio'][name='Q3']:checked").parent('div').addClass('bg-danger');
         }
         if (solution4 == s4) {
             $("input[type='radio'][name='Q4']:checked").parent('div').addClass('bg-success');
+            score += 25;
         } else {
             $("input[type='radio'][name='Q4']:checked").parent('div').addClass('bg-danger');
         }
-
+        var username = $("#username").val();
+        var topicId = $("#topicId").val();
         $.ajax({
             type: "POST",
-            url: "/Exam/DoExam"
+            url: "/Exam/DoExam",
+            data: {
+                username: username,
+                topicId: topicId,
+                score:score
+            },
+            success: function (result) {
+                alert("Sınav Başarı ile çözüldü");
+                window.location.href = "/Exam";
+            },
+            error: function (result) {
+                alert("Bir hata meydana geldi");
+            }
         });
     });
 </script>
