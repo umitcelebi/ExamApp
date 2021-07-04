@@ -42,23 +42,28 @@ namespace ExamApp.Controllers
         [HttpPost]
         public IActionResult CreateExam(Exam exam)
         {
-
-            var questions =new List<Question>()
+            if (ModelState.IsValid)
             {
-                exam.Question1,
-                exam.Question2,
-                exam.Question3,
-                exam.Question4
-            };
-            var topic = new Topic()
-            {
-                Title = exam.Title,
-                Body = exam.Body,
-                Questions = questions
-            };
+                var questions = new List<Question>()
+                {
+                    exam.Question1,
+                    exam.Question2,
+                    exam.Question3,
+                    exam.Question4
+                };
+                var topic = new Topic()
+                {
+                    Title = exam.Title,
+                    Body = exam.Body,
+                    Questions = questions
+                };
 
-            _topicService.Add(topic);
-            return RedirectToAction(nameof(Index));
+                _topicService.Add(topic);
+                return RedirectToAction(nameof(Index));
+            }
+
+            throw new Exception();
+            return View("Create", exam);
         }
 
         public IActionResult Delete(int id)
@@ -75,7 +80,7 @@ namespace ExamApp.Controllers
         [HttpGet]
         public IActionResult DoExam(int id)
         {
-            
+
             return View(_topicService.GetById(id));
         }
 
@@ -83,7 +88,7 @@ namespace ExamApp.Controllers
         public async Task<IActionResult> DoExam(string username, int topicId, int score)
         {
             var user = await _userManager.FindByNameAsync(username);
-            
+
             var result = new ExamResult()
             {
                 UserId = user.Id,
